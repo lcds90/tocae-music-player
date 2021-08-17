@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"]
+    }
+  },
+  "exclude": ["node_modules"],
+  "typeAcquisition": {
+    "exclude": [ "dotenv" ]
+  } // https://stackoverflow.com/questions/63124462/how-to-fix-file-node-modules-dotenv-types-not-found-error-coming-from-j
+}
