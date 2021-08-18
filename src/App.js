@@ -1,22 +1,33 @@
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
 } from 'react-router-dom';
+
+import {
+  ThemeProvider,
+} from 'styled-components';
+
+import {
+  Reset,
+} from 'styled-reset';
+
 import {
   Details,
   Home,
 } from '@pages';
 
+import theme from './theme';
+
 function App() {
   return (
     <>
-      <Router>
+      <ThemeProvider theme={theme}>
+        <Reset />
         <Switch>
           <Route exact path="/details/:id" component={Details} />
           <Route exact path="/" component={Home} />
         </Switch>
-      </Router>
+      </ThemeProvider>
     </>
   );
 }

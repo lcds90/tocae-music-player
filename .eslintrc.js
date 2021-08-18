@@ -25,7 +25,14 @@ module.exports = {
     'import/resolver': {
       alias: {
         map: [
+          ['@', './src/'],
+          ['@actions', './src/actions'],
+          ['@assets', './src/assets'],
+          ['@components', './src/components/'],
           ['@pages', './src/pages/'],
+          ['@reducers', './src/reducers/'],
+          ['@services', './src/services/'],
+          ['@store', './src/store/'],
         ],
       },
     },

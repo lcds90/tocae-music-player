@@ -2,12 +2,15 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "@/*": ["./src/*"],
+      "@actions/*": ["./src/actions/*"],
+      "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
-      "@pages/*": ["./src/pages/*"]
+      "@pages/*": ["./src/pages/*"],
+      "@reducers/*": ["./src/reducers/*"],
+      "@services/*": ["./src/services/*"],
+      "@store/*": ["./src/store/*"]
     }
   },
-  "exclude": ["node_modules"],
-  "typeAcquisition": {
-    "exclude": [ "dotenv" ]
-  } // https://stackoverflow.com/questions/63124462/how-to-fix-file-node-modules-dotenv-types-not-found-error-coming-from-j
+  "exclude": ["node_modules"]
 }
