@@ -1,10 +1,14 @@
 import { PureComponent } from 'react';
 import { connect } from 'react-redux';
+
 import {
   TOP_CHART,
   SEARCH,
   RESULTS,
 } from 'Actions/types';
+import {
+  CardMusic,
+} from 'Components';
 
 class List extends PureComponent {
   render() {
@@ -22,7 +26,10 @@ class List extends PureComponent {
         <div>
           {musics.length === 0 && <span>Pesquisando...</span>}
           {musics.map((music) => (
-            <div>{`${music.title} - ${music.artist.name}`}</div>
+            <CardMusic
+              key={music.id}
+              music={music}
+            />
           ))}
         </div>
       );
@@ -33,7 +40,12 @@ class List extends PureComponent {
         <div>
           {
           data
-            ? data.map((element) => <p key={element.id}>{element.title}</p>)
+            ? data.map((music) => (
+              <CardMusic
+                music={music}
+                key={music.id}
+              />
+            ))
             : <div>Carregando...</div>
           }
         </div>

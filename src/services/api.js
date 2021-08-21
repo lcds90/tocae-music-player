@@ -18,4 +18,19 @@ export const searchForMusic = async (query) => {
   return data;
 };
 
-export const getFavorites = () => 'ok';
+export const getFavorites = () => {
+  const data = JSON.parse(localStorage.getItem('favorited_musics'));
+  return data || [];
+};
+
+export const saveInFavorites = (id) => {
+  const data = JSON.parse(localStorage.getItem('favorited_musics')) || [];
+  data.push(id);
+  localStorage.setItem('favorited_musics', JSON.stringify(data));
+};
+
+export const removeFromFavorites = (music) => {
+  const data = JSON.parse(localStorage.getItem('favorited_musics')) || [];
+  const filteredItems = data.filter((item) => item.id !== music.id);
+  localStorage.setItem('favorited_musics', JSON.stringify(filteredItems));
+};

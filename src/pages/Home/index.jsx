@@ -11,6 +11,7 @@ import {
 } from 'Actions';
 
 import {
+  Favorites,
   MusicList, Search,
 } from 'Features';
 
@@ -29,6 +30,7 @@ class Home extends Component {
       <Container>
         <Title>Tocaê</Title>
         <Search />
+        <Favorites />
         <MusicList />
       </Container>
     );

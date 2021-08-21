@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import {
-  addFavorite,
+  handleFavorite,
 } from 'Actions';
 
 import {
-  ADD_MUSIC_TO_FAVORITES,
+  ADD_FAVORITE,
 } from 'Actions/types';
 
 class InputsList extends React.Component {
@@ -17,7 +17,7 @@ class InputsList extends React.Component {
 
   render() {
     const { props, state } = this;
-    const addMusic = props[ADD_MUSIC_TO_FAVORITES];
+    const addMusic = props[ADD_FAVORITE];
     const { textValue } = state;
 
     return (
@@ -37,7 +37,7 @@ class InputsList extends React.Component {
 }
 
 const mapDispatchtoProps = (dispatch) => ({
-  [ADD_MUSIC_TO_FAVORITES]: (value) => dispatch(addFavorite(value)),
+  [ADD_FAVORITE]: (value) => dispatch(handleFavorite(value)),
 });
 
 export default connect(null, mapDispatchtoProps)(InputsList);
