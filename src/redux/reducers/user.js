@@ -1,10 +1,12 @@
-import { DATA } from '@/global';
+import {
+  FAVORITES,
+} from 'Actions/types';
 
 const INITIAL_STATE = [];
 
 const reducer = (state = INITIAL_STATE, action) => {
   const options = {
-    [DATA]: [...state, action.musics],
+    [FAVORITES]: [...state, action.music],
   };
 
   return options[action.type] || state;

@@ -1,14 +1,13 @@
-// src/InputsList.js
 import React from 'react';
 import { connect } from 'react-redux';
 
 import {
   addFavorite,
-} from '@actions';
+} from 'Actions';
 
 import {
   ADD_MUSIC_TO_FAVORITES,
-} from '@/global';
+} from 'Actions/types';
 
 class InputsList extends React.Component {
   constructor() {
@@ -17,17 +16,20 @@ class InputsList extends React.Component {
   }
 
   render() {
-    const { textValue } = this.state;
+    const { props, state } = this;
+    const addMusic = props[ADD_MUSIC_TO_FAVORITES];
+    const { textValue } = state;
 
     return (
       <div>
         <input
+          style={{ width: '500px' }}
           type="text"
-          placeholder="Digite a tarefa"
+          placeholder="Digite a álbum, artista, ou título musical"
           onChange={(event) => this.setState({ textValue: event.target.value })}
         />
-        <button type="button" onClick={() => this.props[ADD_MUSIC_TO_FAVORITES](textValue)}>
-          Adicionar Tarefa
+        <button type="button" onClick={() => addMusic(textValue)}>
+          Pesquisar Música
         </button>
       </div>
     );

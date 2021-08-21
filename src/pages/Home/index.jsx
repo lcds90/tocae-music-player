@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import {
   Component,
 } from 'react';
@@ -9,55 +7,32 @@ import {
 } from 'react-redux';
 
 import {
-  sendData,
-} from '@actions';
+  fetchData,
+} from 'Actions';
 
 import {
-  getTopChart,
-} from '@services/api';
-import {
-  DATA,
-} from '@/global';
-
-import {
-  Input, List,
-} from '@/components';
+  MusicList, Search,
+} from 'Features';
 
 import {
   Container, Title,
 } from './styles';
 
 class Home extends Component {
-  constructor() {
-    super();
-    this.fetchTopChart = this.fetchTopChart.bind(this);
-  }
-
-  async componentDidMount() {
-    await this.fetchTopChart();
-  }
-
-  async fetchTopChart() {
-    const sendData = this.props[DATA];
-    const results = await getTopChart();
-    await sendData(results);
+  componentDidMount() {
+    const { props } = this;
+    props.fetchData();
   }
 
   render() {
     return (
       <Container>
         <Title>Tocaê</Title>
-        <Input />
-        <List />
+        <Search />
+        <MusicList />
       </Container>
     );
   }
 }
 
-const mapDispatchtoProps = (dispatch) => ({
-  [DATA]: (musics) => dispatch(sendData([...musics])),
-});
-
-const mapStateToProps = (state) => ({ [DATA]: state[DATA] });
-
-export default connect(mapStateToProps, mapDispatchtoProps)(Home);
+export default connect(null, { fetchData })(Home);

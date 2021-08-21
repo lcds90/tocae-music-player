@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src/",
+    "jsx": "react",
     "paths": {
-      "@/*": ["./src/*"],
-      "@actions/*": ["./src/actions/*"],
-      "@assets/*": ["./src/assets/*"],
-      "@components/*": ["./src/components/*"],
-      "@pages/*": ["./src/pages/*"],
-      "@reducers/*": ["./src/reducers/*"],
-      "@services/*": ["./src/services/*"],
-      "@store/*": ["./src/store/*"]
+      "Actions": ["redux/actions"],
+      "Assets": ["assets"],
+      "Components": ["components"],
+      "Features": ["features"],
+      "Pages": ["pages"],
+      "Reducers": ["redux/reducers"],
+      "Services": ["services"],
+      "Store": ["redux/store"]
     }
   },
+  "include": ["src"],
   "exclude": ["node_modules"]
 }

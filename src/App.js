@@ -14,7 +14,7 @@ import {
 import {
   Details,
   Home,
-} from '@pages';
+} from 'Pages';
 
 import theme from './theme';
 

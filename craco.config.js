@@ -4,14 +4,14 @@ const { ESLINT_MODES } = require('@craco/craco');
 module.exports = {
   webpack: {
     alias: {
-      '@': path.resolve(__dirname, 'src/'),
-      '@actions': path.resolve(__dirname, 'src/actions'),
-      '@assets': path.resolve(__dirname, 'src/assets'),
-      '@components': path.resolve(__dirname, 'src/components/'),
-      '@pages': path.resolve(__dirname, 'src/pages/'),
-      '@reducers': path.resolve(__dirname, 'src/reducers/'),
-      '@services': path.resolve(__dirname, 'src/services/'),
-      '@store': path.resolve(__dirname, 'src/store/'),
+      'Actions': path.resolve(__dirname, 'src/redux/actions/'),
+      'Assets': path.resolve(__dirname, 'src/assets/'),
+      'Components': path.resolve(__dirname, 'src/components/'),
+      'Features': path.resolve(__dirname, 'src/features/'),
+      'Pages': path.resolve(__dirname, 'src/pages/'),
+      'Reducers': path.resolve(__dirname, 'src/redux/reducers/'),
+      'Services': path.resolve(__dirname, 'src/services/'),
+      'Store': path.resolve(__dirname, 'src/redux/store/'),
     },
   },
   eslint: {
