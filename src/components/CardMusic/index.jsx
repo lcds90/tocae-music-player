@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { ADD_FAVORITE, REMOVE_FAVORITE } from 'Actions/types';
+import { ADD_FAVORITE, REMOVE_FAVORITE, FAVORITES } from 'Actions/types';
 import { handleFavorite } from 'Actions';
 import { getFavorites, saveInFavorites, removeFromFavorites } from 'Services/api';
 
@@ -14,14 +14,25 @@ class CardMusic extends Component {
     this.checkIfIsFavorited = this.checkIfIsFavorited.bind(this);
   }
 
-  componentDidMount() {
-    this.checkIfIsFavorited();
+  async componentDidMount() {
+    await this.checkIfIsFavorited();
   }
 
-  checkIfIsFavorited() {
-    const { music: { id } } = this.props;
-    const favoritesIds = getFavorites();
-    const isFavorited = favoritesIds.find((favorite) => favorite.id === id);
+  async componentDidUpdate(prevProps) {
+    const { props, state } = this;
+    const actualFavorites = props[FAVORITES];
+    const prevFavorites = prevProps[FAVORITES];
+    const { favorited } = state;
+
+    if (favorited === null) this.checkIfIsFavorited();
+    if (actualFavorites.length !== prevFavorites.length) this.checkIfIsFavorited();
+  }
+
+  async checkIfIsFavorited() {
+    const { props } = this;
+    const favoritesIds = props[FAVORITES];
+    const { music: { id } } = props;
+    const isFavorited = await favoritesIds.some((favorite) => favorite.id === id);
     if (isFavorited) this.setState({ favorited: true });
     else this.setState({ favorited: false });
   }
@@ -33,10 +44,10 @@ class CardMusic extends Component {
 
     if (!favorited) {
       addToFavorite(music);
-      this.setState({ favorited: true }, saveInFavorites(music));
+      this.setState({ favorited: null }, saveInFavorites(music));
     } else {
       removeFromFavorite(music);
-      this.setState({ favorited: false }, removeFromFavorites(music));
+      this.setState({ favorited: null }, removeFromFavorites(music));
     }
   }
 
@@ -45,7 +56,6 @@ class CardMusic extends Component {
     const { music } = props;
     const { favorited } = state;
     const { album, artist, title } = music;
-
     return (
       <section style={{ display: 'flex' }}>
         {`${title} - ${artist.name}`}
@@ -70,4 +80,8 @@ const mapDispatchtoProps = (dispatch) => ({
   [REMOVE_FAVORITE]: (value) => dispatch(handleFavorite(value, 'remove')),
 });
 
-export default connect(null, mapDispatchtoProps)(CardMusic);
+const mapStateToProps = (state) => ({
+  [FAVORITES]: state[FAVORITES],
+});
+
+export default connect(mapStateToProps, mapDispatchtoProps)(CardMusic);

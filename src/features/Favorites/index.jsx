@@ -1,6 +1,7 @@
 import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { FAVORITES } from 'Actions/types';
+import { CardMusic } from 'Components';
 
 class Favorites extends PureComponent {
   render() {
@@ -11,7 +12,7 @@ class Favorites extends PureComponent {
       <div>
         Favoritos
         {favorites.map((favorite) => (
-          <div key={favorite.id}>{favorite.title}</div>
+          <CardMusic music={favorite} key={favorite.id}>{favorite.title}</CardMusic>
         ))}
       </div>
     );
