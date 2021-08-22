@@ -6,12 +6,14 @@ const INITIAL_STATE = {
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
-  const options = {
-    [TOP_CHART]: { ...state, topChart: action.topChart },
-    [RESULTS]: { ...state, resultsFromSearch: action.resultsFromSearch },
-  };
-
-  return options[action.type] || state;
+  switch (action.type) {
+    case TOP_CHART:
+      return { ...state, topChart: action.topChart };
+    case RESULTS:
+      return { ...state, resultsFromSearch: action.resultsFromSearch };
+    default:
+      return state;
+  }
 };
 
 export default reducer;

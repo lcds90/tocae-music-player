@@ -44,7 +44,7 @@ class CardMusic extends Component {
     const { props, state, handleFavoriteMusic } = this;
     const { music } = props;
     const { favorited } = state;
-    const { title, artist } = music;
+    const { album, artist, title } = music;
 
     return (
       <section style={{ display: 'flex' }}>

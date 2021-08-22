@@ -12,6 +12,7 @@ import {
 import {
   searchForMusic,
 } from 'Services/api';
+import { Container, Input } from './styles';
 
 class Search extends Component {
   constructor(props) {
@@ -45,14 +46,13 @@ class Search extends Component {
   render() {
     const { handleSearch } = this;
     return (
-      <div>
-        <input
-          style={{ width: '500px' }}
+      <Container>
+        <Input
           type="text"
           placeholder="Digite a álbum, artista, ou título musical"
           onChange={handleSearch}
         />
-      </div>
+      </Container>
     );
   }
 }

@@ -7,13 +7,14 @@ import {
 const INITIAL_STATE = [];
 
 const reducer = (state = INITIAL_STATE, action) => {
-  const options = {
-    [ADD_FAVORITE]: [...state, action.music],
-    [REMOVE_FAVORITE]: [...state].filter((music) => music.id !== action.music.id),
-    [FAVORITES]: state,
-  };
-
-  return options[action.type] || state;
+  switch (action.type) {
+    case ADD_FAVORITE:
+      return [...state, action.music];
+    case REMOVE_FAVORITE:
+      return [...state].filter((music) => music.id !== action.music.id);
+    default:
+      return state;
+  }
 };
 
 export default reducer;

@@ -15,8 +15,9 @@ import {
   MusicList, Search,
 } from 'Features';
 
+import { Navbar } from 'Components';
 import {
-  Container, Title,
+  Container,
 } from './styles';
 
 class Home extends Component {
@@ -28,8 +29,9 @@ class Home extends Component {
   render() {
     return (
       <Container>
-        <Title>Tocaê</Title>
-        <Search />
+        <Navbar>
+          <Search />
+        </Navbar>
         <Favorites />
         <MusicList />
       </Container>
