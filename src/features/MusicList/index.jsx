@@ -24,7 +24,7 @@ class List extends PureComponent {
 
     if (isUserSearching && musics && total > 0) {
       return (
-        <MusicList>
+        <MusicList userSearching={isUserSearching}>
           <Title>Resultados de pesquisa</Title>
           {musics.length === 0 && <span>Pesquisando...</span>}
           {musics.map((music) => (
@@ -38,7 +38,7 @@ class List extends PureComponent {
     }
 
     return (
-      <MusicList>
+      <MusicList userSearching={isUserSearching}>
         <Title>Top 10</Title>
         {
           data

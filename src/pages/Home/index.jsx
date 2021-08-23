@@ -32,11 +32,11 @@ class Home extends Component {
     const { props } = this;
     const { isUserSearching } = props[SEARCH];
     return (
-      <Container userSearching={isUserSearching}>
+      <Container>
         <Navbar>
           <Search />
         </Navbar>
-        <Wrapper>
+        <Wrapper userSearching={isUserSearching}>
           <Favorites />
           <MusicList />
         </Wrapper>

@@ -22,7 +22,7 @@ export const FavoritesList = styled.section`
     align-content:space-between;
     grid-template-rows: 100px;
     ${({ userSearching }) => (userSearching
-    ? 'width:0%' : 'width:100%')}
+    ? 'width:0%; height: 100%' : 'width:100%; height: 100%;')}
   }
 
 `;

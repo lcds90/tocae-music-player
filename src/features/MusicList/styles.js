@@ -20,6 +20,7 @@ export const MusicList = styled.section`
   height: 100%;
   width: 100%;
   place-items:center;
+  transition: all 2s ease;
 `;
 
 export const Title = styled.h2`
