@@ -4,7 +4,7 @@ export const MusicList = styled.section`
   display: grid;
   overflow: auto;
   grid-auto-columns: 250px;
-  background-color: ${({ theme: { colors } }) => colors.grey.primary};
+  background-color: ${({ theme: { colors } }) => colors.light.tertiary};
   gap: 20px;
   grid-template-rows: 250px;
   grid-auto-rows: 250px;
@@ -28,7 +28,7 @@ export const Title = styled.h2`
     justify-content:center;
     align-items:center;
     font-size:1.5rem;
-    background-color: ${({ theme: { colors } }) => colors.grey.secondary};
+    background-color: ${({ theme: { colors } }) => colors.light.secondary};
     padding:20px;
     color:white;
     letter-spacing:5px;

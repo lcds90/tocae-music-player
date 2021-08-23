@@ -8,14 +8,6 @@ export const Container = styled.main`
   overflow: auto;
   display: flex;
   flex-direction:column;
-
-/*   grid-template-columns: 1fr;
-  grid-template-rows: 0.5fr 1fr 3fr;
-
-  @media(min-width: 600px) {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.5fr 3fr;
-  } */
 `;
 
 export const Wrapper = styled.div`

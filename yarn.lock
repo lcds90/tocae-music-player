@@ -1312,6 +1312,16 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
+"@iconify/icons-mdi@^1.0.46":
+  version "1.1.20"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-mdi/-/icons-mdi-1.1.20.tgz#73829d2945fd3b54c35f5fe67f86650474333c32"
+  integrity sha512-UyDgT0FdyMcBtDxTMAI4LbOqx0IZODCvH2E1ZL4mOxkjedRT34c/nhvvgV7tWn2viMohVYKb0QtstaJo2/SFEw==
+
+"@iconify/react@^1.1.3":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-1.1.4.tgz#c778eddbaf196e55705d0bedff00d039dc1de8d3"
+  integrity sha512-oxq8IMOq8q3nKGiDHbQPC8FcFuBsKve68JWBo140d5LRnj0bv5TB/FE/y01ZSvEZ7PlI2HIrnb2qivPN8kTDgw==
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -9691,13 +9701,6 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
-react-audio-player@^0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/react-audio-player/-/react-audio-player-0.17.0.tgz#4be7b1952512801f36ba0865a9c98f7b108f991e"
-  integrity sha512-aCZgusPxA9HK7rLZcTdhTbBH9l6do9vn3NorgoDZRxRxJlOy9uZWzPaKjd7QdcuP2vXpxGA/61JMnnOEY7NXeA==
-  dependencies:
-    prop-types "^15.7.2"
-
 react-dev-utils@^11.0.3:
   version "11.0.4"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-11.0.4.tgz#a7ccb60257a1ca2e0efe7a83e38e6700d17aa37a"
@@ -9741,6 +9744,15 @@ react-error-overlay@^6.0.9:
   version "6.0.9"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
+
+react-h5-audio-player@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/react-h5-audio-player/-/react-h5-audio-player-3.7.1.tgz#7401f1385a5bd369652dde18cca5823fd6cc6f30"
+  integrity sha512-MWeMZ/orBXxt48P4SVBUfzRy+lw5acz61nc8mhDzqfE4VP7kPzpAnedGsC7mhu+BKy5/1+nO/0q4FFCuNe6U2Q==
+  dependencies:
+    "@babel/runtime" "^7.10.2"
+    "@iconify/icons-mdi" "^1.0.46"
+    "@iconify/react" "^1.1.3"
 
 react-icons@^4.2.0:
   version "4.2.0"
