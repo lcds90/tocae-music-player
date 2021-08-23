@@ -32,7 +32,6 @@ class List extends Component {
           resultsFromNext: data,
           next: newNext,
         },
-        () => console.log(this.state.next),
       );
     }
   }
