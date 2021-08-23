@@ -1,5 +1,5 @@
 import {
-  getTopChart, getFavorites,
+  getTopChart, getFavorites, searchForMoreMusic,
 } from 'Services/api';
 import {
   ADD_FAVORITE,
@@ -22,8 +22,8 @@ export const fetchTopChart = (topChart) => (
 export const search = ({ query, isUserSearching }) => (
   { type: SEARCH, query, isUserSearching });
 
-export const sendResults = (resultsFromSearch) => (
-  { type: RESULTS, resultsFromSearch });
+export const sendResults = (results) => (
+  { type: RESULTS, results });
 
 export const sendMusicToPlayer = (url) => (
   { type: PLAYER, musicPlaying: url }

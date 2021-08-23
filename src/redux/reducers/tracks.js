@@ -3,7 +3,10 @@ import { PLAYER } from 'redux/actions/types';
 
 const INITIAL_STATE = {
   topChart: [],
-  resultsFromSearch: [],
+  results: {
+    data: [],
+    next: '',
+  },
   musicPlaying: '',
 };
 
@@ -12,7 +15,10 @@ const reducer = (state = INITIAL_STATE, action) => {
     case TOP_CHART:
       return { ...state, topChart: action.topChart };
     case RESULTS:
-      return { ...state, resultsFromSearch: action.resultsFromSearch };
+      return {
+        ...state,
+        results: action.results,
+      };
     case PLAYER:
       return { ...state, musicPlaying: action.musicPlaying };
     default:

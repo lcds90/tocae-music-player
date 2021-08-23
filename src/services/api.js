@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-const URL = 'https://lcds-cors.herokuapp.com/https://api.deezer.com';
+const CORS = 'https://lcds-cors.herokuapp.com';
+const BASE = 'https://api.deezer.com';
 
 export const getTopChart = async () => {
   const { data } = await axios({
     method: 'get',
-    url: `${URL}/chart`,
+    url: `${CORS}/${BASE}/chart`,
     proxyHeaders: false,
     credentials: false,
   });
@@ -15,8 +16,18 @@ export const getTopChart = async () => {
 export const searchForMusic = async (query) => {
   const { data } = await axios({
     method: 'get',
-    url: `${URL}/search?q=${encodeURI(query)}`,
+    url: `${CORS}/${BASE}/search?q=${encodeURI(query)}`,
   });
+
+  return data;
+};
+
+export const searchForMoreMusic = async (query) => {
+  const { data } = await axios({
+    method: 'get',
+    url: `${CORS}/${BASE}/${query}`,
+  });
+
   return data;
 };
 
