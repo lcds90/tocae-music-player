@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'https://api.deezer.com';
+const URL = 'https://lcds-cors.herokuapp.com/https://api.deezer.com';
 
 export const getTopChart = async () => {
   const { data } = await axios({
