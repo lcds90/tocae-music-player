@@ -24,8 +24,8 @@ function App() {
       <Switch>
         <ThemeProvider theme={theme}>
           <Reset />
-          <Route exact path="/details/:id" component={Details} />
           <Route exact path="/" component={Home} />
+          <Route path="/details/:id" component={Details} />
         </ThemeProvider>
       </Switch>
     </>
