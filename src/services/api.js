@@ -6,6 +6,10 @@ export const getTopChart = async () => {
   const { data } = await axios({
     method: 'get',
     url: `${URL}/chart`,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    },
   });
   return data;
 };
