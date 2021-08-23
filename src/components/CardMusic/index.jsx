@@ -2,7 +2,13 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { ADD_FAVORITE, REMOVE_FAVORITE, FAVORITES } from 'Actions/types';
 import { handleFavorite } from 'Actions';
-import { getFavorites, saveInFavorites, removeFromFavorites } from 'Services/api';
+import { saveInFavorites, removeFromFavorites } from 'Services/api';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import ReactAudioPlayer from 'react-audio-player';
+import {
+  Artist,
+  Card, Container, FavoriteButton, Info, SeeOnDeezer, Title,
+} from './styles';
 
 class CardMusic extends Component {
   constructor(props) {
@@ -55,22 +61,33 @@ class CardMusic extends Component {
     const { props, state, handleFavoriteMusic } = this;
     const { music } = props;
     const { favorited } = state;
-    const { album, artist, title } = music;
+    const {
+      album, artist, title, link,
+    } = music;
     return (
-      <section style={{ display: 'flex' }}>
-        {`${title} - ${artist.name}`}
-        <article>
-          <button
+      <Container>
+        <Title>{title}</Title>
+        <Artist>{artist.name}</Artist>
+        <Info>
+          <FavoriteButton
             onClick={() => handleFavoriteMusic(music)}
             type="submit"
           >
             {!favorited
-              ? 'Adicionar aos Favoritos'
-              : 'Remover dos favoritos'}
+              ? <FaRegHeart />
+              : <FaHeart />}
 
-          </button>
-        </article>
-      </section>
+          </FavoriteButton>
+          <SeeOnDeezer href={link} target="_blank">
+            Ver no Deezer
+          </SeeOnDeezer>
+          <ReactAudioPlayer
+            src={`${link}`}
+            controls
+          />
+          <Card image={album.cover_big} />
+        </Info>
+      </Container>
     );
   }
 }

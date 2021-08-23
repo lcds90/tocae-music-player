@@ -9,6 +9,7 @@ import {
 import {
   CardMusic,
 } from 'Components';
+import MusicList from './styles';
 
 class List extends PureComponent {
   render() {
@@ -23,7 +24,7 @@ class List extends PureComponent {
 
     if (isUserSearching && musics && total > 0) {
       return (
-        <div>
+        <MusicList>
           {musics.length === 0 && <span>Pesquisando...</span>}
           {musics.map((music) => (
             <CardMusic
@@ -31,14 +32,13 @@ class List extends PureComponent {
               music={music}
             />
           ))}
-        </div>
+        </MusicList>
       );
     }
 
     return (
-      <div>
-        <div>
-          {
+      <MusicList>
+        {
           data
             ? data.map((music) => (
               <CardMusic
@@ -47,9 +47,8 @@ class List extends PureComponent {
               />
             ))
             : <div>Carregando...</div>
-          }
-        </div>
-      </div>
+        }
+      </MusicList>
     );
   }
 }

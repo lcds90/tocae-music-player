@@ -8,8 +8,12 @@ export const Navbar = styled.nav`
   grid-auto-columns: 1fr;
   background: ${({ theme: { colors } }) => colors.dark.tertiary};
   place-items: center;
-  grid-column: span 2;
   border-bottom: 2px inset black;
+  height: 10vh;
+  
+  @media(min-width: 600px){
+    grid-column: span 2;
+  }
 `;
 
 export const Home = styled.span`

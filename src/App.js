@@ -21,13 +21,13 @@ import theme from './theme';
 function App() {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <Reset />
-        <Switch>
+      <Switch>
+        <ThemeProvider theme={theme}>
+          <Reset />
           <Route exact path="/details/:id" component={Details} />
           <Route exact path="/" component={Home} />
-        </Switch>
-      </ThemeProvider>
+        </ThemeProvider>
+      </Switch>
     </>
   );
 }
