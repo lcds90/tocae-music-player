@@ -1,69 +1,71 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchForMoreMusic } from 'Services/api';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import { TOP_CHART, SEARCH, RESULTS } from 'Actions/types';
 import { CardMusic } from 'Components';
+import { searchForMoreMusic } from 'Services/api';
 import { MusicList, Title } from './styles';
 
 class List extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: 1,
-      results: [],
+      next: '',
+      resultsFromNext: [],
     };
-    this.fetchMoreData = this.fetchMoreData.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
-  componentDidMount() {
+  componentDidUpdate(prevProps, prevState) {
     const { props } = this;
     const { results: { next } } = props[RESULTS];
-    const { isUserSearching } = props[SEARCH];
-    const {
-      topChart: { data },
-    } = props[TOP_CHART];
-    const { results: { data: musics, total } } = props[RESULTS];
-
-    this.setState({
-      isUserSearching,
-      next,
-      topChart: data,
-      musics,
-      total,
-    });
+    if (next !== prevProps[RESULTS].results.next) {
+      this.setState({ next });
+    }
   }
 
-  async fetchMoreData() {
-    alert('ok');
-    const { results: { next } } = props[RESULTS];
-    const results = await searchForMoreMusic(next);
+  async handleScroll({ target }, next) {
+    const isBottom = target.scrollHeight - target.scrollTop === target.clientHeight;
+    if (isBottom && next.length > 0) {
+      const { data, next: newNext } = await searchForMoreMusic(next);
+      this.setState(
+        {
+          resultsFromNext: data,
+          next: newNext,
+        },
+        () => console.log(this.state.next),
+      );
+    }
   }
 
   render() {
-    const { props } = this;
+    const { props, state } = this;
     const { isUserSearching } = props[SEARCH];
     const {
       topChart: { data },
     } = props[TOP_CHART];
+    const {
+      results: { data: musics, total },
+    } = props[RESULTS];
 
-    const { results: { data: musics, total } } = props[RESULTS];
+    const { resultsFromNext, next } = state;
     if (isUserSearching && musics && total > 0) {
       return (
-        <InfiniteScroll
-          dataLength={musics.length}
-          next={this.fetchMoreData}
-          hasMore
-          loader={<h4>Loading...</h4>}
-        >
-          <MusicList userSearching={isUserSearching}>
+        <>
+          <MusicList
+            onScroll={(e) => this.handleScroll(e, next)}
+            userSearching={isUserSearching}
+          >
             <Title>Resultados de pesquisa</Title>
             {musics.length === 0 && <span>Pesquisando...</span>}
             {musics.map((music) => (
               <CardMusic key={music.id} music={music} />
             ))}
+            {resultsFromNext.length > 0
+              && resultsFromNext.map((music) => (
+                <CardMusic key={music.id} music={music} />
+              ))}
           </MusicList>
-        </InfiniteScroll>
+        </>
       );
     }
 

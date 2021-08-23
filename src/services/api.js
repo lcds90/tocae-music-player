@@ -25,7 +25,7 @@ export const searchForMusic = async (query) => {
 export const searchForMoreMusic = async (query) => {
   const { data } = await axios({
     method: 'get',
-    url: `${CORS}/${BASE}/${query}`,
+    url: `${CORS}/${query}`,
   });
 
   return data;
