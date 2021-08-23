@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
   background: ${({ theme: { colors } }) => colors.light.tertiary};
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: auto;
   display: flex;
@@ -11,11 +11,13 @@ export const Container = styled.main`
 `;
 
 export const Wrapper = styled.div`
-  display:flex;
+  display:grid;
   overflow:auto;
-  flex-direction:column;
   height:100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
   @media(min-width: 768px) {
-    flex-direction:row;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 1fr;
   }
 `;

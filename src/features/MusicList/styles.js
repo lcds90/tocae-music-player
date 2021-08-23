@@ -10,7 +10,6 @@ export const MusicList = styled.section`
   grid-auto-rows: 250px;
   display:grid;
   grid-auto-flow: column;
-  align-content:center;
   justify-content: start;
   @media (min-width: 768px) {
     grid-template-columns: 1fr;
@@ -20,7 +19,7 @@ export const MusicList = styled.section`
   }
   height: 100%;
   width: 100%;
-
+  place-items:center;
 `;
 
 export const Title = styled.h2`

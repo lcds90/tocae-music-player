@@ -4,7 +4,7 @@ export const Container = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width:100%;
 `;
 
 export const Input = styled.input`
@@ -13,7 +13,7 @@ export const Input = styled.input`
   margin: auto;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(20, 20, 20, 0.5);
-  width: 100%;
+  width: 90%;
 
   ::placeholder {
     text-align: center;

@@ -8,10 +8,10 @@ export const FavoritesList = styled.section`
   grid-auto-rows: 250px;
   transition:width 2s ease, height 2s ease;
   height:100%;
+  width:100%;
   display:grid;
   grid-auto-flow: column;
-  justify-content: start;
-  align-content:center;
+  place-items:center;
   ${({ userSearching }) => (userSearching && `
   height:0;
   `)}
