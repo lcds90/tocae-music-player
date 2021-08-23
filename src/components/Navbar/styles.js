@@ -6,7 +6,7 @@ export const Navbar = styled.nav`
   grid-auto-flow: column;
   grid-template-columns: 1fr 6fr;
   grid-auto-columns: 1fr;
-  background: ${({ theme: { colors } }) => colors.dark.tertiary};
+  background: ${({ theme: { colors } }) => colors.dark.primary};
   place-items: center;
   border-bottom: 2px inset black;
   height: 10vh;
@@ -22,6 +22,8 @@ export const Home = styled.span`
   border-radius: 5px;
 `;
 
-export const Logo = styled.h1`
+export const Logo = styled.img`
   font-size: 1rem;
+  width:50px;
+  height:auto;
 `;

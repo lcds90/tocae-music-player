@@ -10,6 +10,8 @@ import {
   fetchData,
 } from 'Actions';
 
+import { SEARCH } from 'Actions/types';
+
 import {
   Favorites,
   MusicList, Player, Search,
@@ -17,7 +19,7 @@ import {
 
 import { Navbar } from 'Components';
 import {
-  Container,
+  Container, Wrapper,
 } from './styles';
 
 class Home extends Component {
@@ -27,17 +29,25 @@ class Home extends Component {
   }
 
   render() {
+    const { props } = this;
+    const { isUserSearching } = props[SEARCH];
     return (
-      <Container>
+      <Container userSearching={isUserSearching}>
         <Navbar>
           <Search />
         </Navbar>
-        <Favorites />
-        <MusicList />
+        <Wrapper>
+          <Favorites />
+          <MusicList />
+        </Wrapper>
         <Player />
       </Container>
     );
   }
 }
 
-export default connect(null, { fetchData })(Home);
+const mapStateToProps = (state) => ({
+  [SEARCH]: state[SEARCH],
+});
+
+export default connect(mapStateToProps, { fetchData })(Home);

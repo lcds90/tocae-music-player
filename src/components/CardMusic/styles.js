@@ -29,7 +29,8 @@ export const Info = styled.article`
 
 export const Card = styled.section`
   background: url(${({ image }) => image});
-  background-size: cover;
+  background-size: contain;
+  background-repeat:no-repeat;
   background-position: center;
   filter: grayscale(15%);
   position: absolute;
@@ -55,7 +56,7 @@ export const FavoriteButton = styled.button`
   bottom:-5px;
   right:0;
   border:0;
-  padding:5px;
+  padding:15px;
   border-radius: 10px 0 10px 0;
   background-color: ${({ theme: { colors } }) => colors.dark.primary};
   cursor:pointer;
