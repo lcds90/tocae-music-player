@@ -1,10 +1,11 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { ADD_FAVORITE, REMOVE_FAVORITE, FAVORITES } from 'Actions/types';
-import { handleFavorite } from 'Actions';
+import {
+  ADD_FAVORITE, REMOVE_FAVORITE, FAVORITES, PLAYER,
+} from 'Actions/types';
+import { handleFavorite, sendMusicToPlayer } from 'Actions';
 import { saveInFavorites, removeFromFavorites } from 'Services/api';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import ReactAudioPlayer from 'react-audio-player';
 import {
   Artist,
   Card, Container, FavoriteButton, Info, SeeOnDeezer, Title,
@@ -24,7 +25,7 @@ class CardMusic extends Component {
     await this.checkIfIsFavorited();
   }
 
-  async componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps) {
     const { props, state } = this;
     const actualFavorites = props[FAVORITES];
     const prevFavorites = prevProps[FAVORITES];
@@ -60,9 +61,10 @@ class CardMusic extends Component {
   render() {
     const { props, state, handleFavoriteMusic } = this;
     const { music } = props;
+    const playMusic = props[PLAYER];
     const { favorited } = state;
     const {
-      album, artist, title, link,
+      album, artist, title, link, preview,
     } = music;
     return (
       <Container>
@@ -81,10 +83,12 @@ class CardMusic extends Component {
           <SeeOnDeezer href={link} target="_blank">
             Ver no Deezer
           </SeeOnDeezer>
-          <ReactAudioPlayer
-            src={`${link}`}
-            controls
-          />
+          <button
+            type="button"
+            onClick={() => playMusic(preview)}
+          >
+            Play
+          </button>
           <Card image={album.cover_big} />
         </Info>
       </Container>
@@ -95,6 +99,7 @@ class CardMusic extends Component {
 const mapDispatchtoProps = (dispatch) => ({
   [ADD_FAVORITE]: (value) => dispatch(handleFavorite(value, 'add')),
   [REMOVE_FAVORITE]: (value) => dispatch(handleFavorite(value, 'remove')),
+  [PLAYER]: (url) => dispatch(sendMusicToPlayer(url)),
 });
 
 const mapStateToProps = (state) => ({

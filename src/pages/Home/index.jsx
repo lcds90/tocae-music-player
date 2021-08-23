@@ -12,7 +12,7 @@ import {
 
 import {
   Favorites,
-  MusicList, Search,
+  MusicList, Player, Search,
 } from 'Features';
 
 import { Navbar } from 'Components';
@@ -34,6 +34,7 @@ class Home extends Component {
         </Navbar>
         <Favorites />
         <MusicList />
+        <Player />
       </Container>
     );
   }

@@ -12,6 +12,8 @@ const reducer = (state = INITIAL_STATE, action) => {
       return [...state, action.music];
     case REMOVE_FAVORITE:
       return [...state].filter((music) => music.id !== action.music.id);
+    case FAVORITES:
+      return state;
     default:
       return state;
   }

@@ -1,8 +1,10 @@
 import { RESULTS, TOP_CHART } from 'Actions/types';
+import { PLAYER } from 'redux/actions/types';
 
 const INITIAL_STATE = {
   topChart: [],
   resultsFromSearch: [],
+  musicPlaying: '',
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -11,6 +13,8 @@ const reducer = (state = INITIAL_STATE, action) => {
       return { ...state, topChart: action.topChart };
     case RESULTS:
       return { ...state, resultsFromSearch: action.resultsFromSearch };
+    case PLAYER:
+      return { ...state, musicPlaying: action.musicPlaying };
     default:
       return state;
   }

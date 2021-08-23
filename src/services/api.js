@@ -6,6 +6,8 @@ export const getTopChart = async () => {
   const { data } = await axios({
     method: 'get',
     url: `${URL}/chart`,
+    proxyHeaders: false,
+    credentials: false,
   });
   return data;
 };

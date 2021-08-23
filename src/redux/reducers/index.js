@@ -4,6 +4,7 @@ import {
   ADD_FAVORITE,
   REMOVE_FAVORITE,
   FAVORITES,
+  PLAYER,
   TOP_CHART,
   SEARCH,
   RESULTS,
@@ -16,6 +17,7 @@ import user from './user';
 const rootReducer = combineReducers({
   [TOP_CHART]: tracks,
   [RESULTS]: tracks,
+  [PLAYER]: tracks,
   [SEARCH]: search,
   [ADD_FAVORITE]: user,
   [REMOVE_FAVORITE]: user,

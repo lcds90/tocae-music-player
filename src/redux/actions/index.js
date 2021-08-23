@@ -7,6 +7,7 @@ import {
   TOP_CHART,
   SEARCH,
   RESULTS,
+  PLAYER,
 } from './types';
 
 export const handleFavorite = (music, operation) => (
@@ -23,6 +24,10 @@ export const search = ({ query, isUserSearching }) => (
 
 export const sendResults = (resultsFromSearch) => (
   { type: RESULTS, resultsFromSearch });
+
+export const sendMusicToPlayer = (url) => (
+  { type: PLAYER, musicPlaying: url }
+);
 
 export const fetchData = () => async (dispatch) => {
   const { tracks } = await getTopChart();
