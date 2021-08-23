@@ -1,14 +1,15 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import deezer from 'Assets/deezer.png';
 import {
   ADD_FAVORITE, REMOVE_FAVORITE, FAVORITES, PLAYER,
 } from 'Actions/types';
 import { handleFavorite, sendMusicToPlayer } from 'Actions';
 import { saveInFavorites, removeFromFavorites } from 'Services/api';
-import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { FaHeart, FaPlayCircle, FaRegHeart } from 'react-icons/fa';
 import {
   Artist,
-  Card, Container, FavoriteButton, Info, SeeOnDeezer, Title,
+  Card, Container, FavoriteButton, Info, Play, SeeOnDeezer, Title,
 } from './styles';
 
 class CardMusic extends Component {
@@ -68,8 +69,8 @@ class CardMusic extends Component {
     } = music;
     return (
       <Container>
-        <Title>{title}</Title>
         <Artist>{artist.name}</Artist>
+        <Title>{title}</Title>
         <Info>
           <FavoriteButton
             onClick={() => handleFavoriteMusic(music)}
@@ -80,15 +81,13 @@ class CardMusic extends Component {
               : <FaHeart />}
 
           </FavoriteButton>
-          <SeeOnDeezer href={link} target="_blank">
-            Ver no Deezer
-          </SeeOnDeezer>
-          <button
+          <SeeOnDeezer logo={deezer} href={link} target="_blank" />
+          <Play
             type="button"
             onClick={() => playMusic(preview)}
           >
-            Play
-          </button>
+            <FaPlayCircle />
+          </Play>
           <Card image={album.cover_big} />
         </Info>
       </Container>

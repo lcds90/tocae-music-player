@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
   display:grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-rows: 0.5fr 4fr;
   position:relative;
   background-color: transparent;
@@ -56,30 +56,66 @@ export const FavoriteButton = styled.button`
   bottom:-5px;
   right:0;
   border:0;
+  width:40px;
+  height:40px;
   padding:15px;
   border-radius: 10px 0 10px 0;
   background-color: ${({ theme: { colors } }) => colors.dark.primary};
   cursor:pointer;
   color: ${({ theme: { colors } }) => colors.green};
-  font-style: italic;
 `;
 
 export const Title = styled.h2`
   padding:5px;
   background-color: ${({ theme: { colors } }) => colors.dark.primary};
   color: ${({ theme: { colors } }) => colors.light.primary};
-
+  font-size:0.75rem;
+  flex-wrap:nowrap;
+  display:flex;
+  align-items:center;
 `;
 
 export const Artist = styled.h3`
   padding:5px;
   background-color: ${({ theme: { colors } }) => colors.light.primary};
   color: ${({ theme: { colors } }) => colors.dark.primary};
-  border-radius:5px 15px 0 10px;
+  display:flex;
+  align-items:center;
 `;
 
 export const SeeOnDeezer = styled.a`
-  padding:5px;
-  background-color:orange;
-  
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  position:absolute;
+  bottom:105px;
+  width:40px;
+  height:40px;
+  right:0;
+  border:0;
+  border-radius: 10px 0 0 10px;
+  background: url(${({ logo }) => logo});
+  background-size: 25%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: ${({ theme: { colors } }) => colors.dark.primary};
+  cursor:pointer;
+  color: ${({ theme: { colors } }) => colors.green};
+`;
+
+export const Play = styled.button`
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  position:absolute;
+  bottom:50px;
+  right:0;
+  border:0;
+  padding:15px;
+  width:40px;
+  height:40px;
+  border-radius: 10px 0 0 10px;
+  background-color: ${({ theme: { colors } }) => colors.dark.primary};
+  cursor:pointer;
+  color: ${({ theme: { colors } }) => colors.green};
 `;

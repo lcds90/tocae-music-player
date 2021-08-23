@@ -1,7 +1,10 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { PLAYER } from 'Actions/types';
-import { Container, Audioplayer } from './styles';
+import {
+  FaFacebook, FaInstagram, FaLinkedin, FaYoutube,
+} from 'react-icons/fa';
+import { Container, Audioplayer, ContainerMediaSocial } from './styles';
 
 class Player extends Component {
   componentDidUpdate(prevProps) {
@@ -23,6 +26,20 @@ class Player extends Component {
           controls
           autoPlay
         />
+        <ContainerMediaSocial>
+          <a href="https://www.facebook.com/manipulae/" target="_blank" rel="noreferrer">
+            <FaFacebook fontSize="2rem" title="Página do Facebook da Manipulaê" />
+          </a>
+          <a href="https://www.instagram.com/manipulaebr/?hl=pt-br" target="_blank" rel="noreferrer">
+            <FaInstagram fontSize="2rem" title="Página do Instagram da Manipulaê" />
+          </a>
+          <a href="https://www.linkedin.com/company/manipula%C3%AA/" target="_blank" rel="noreferrer">
+            <FaLinkedin fontSize="2rem" title="Página do Linkedin da Manipulaê" />
+          </a>
+          <a href="https://www.youtube.com/channel/UCsW1M0ci-vcxcv5PPb9VFwg" target="_blank" rel="noreferrer">
+            <FaYoutube fontSize="2rem" title="Página do Youtube da Manipulaê" />
+          </a>
+        </ContainerMediaSocial>
       </Container>
     );
   }
