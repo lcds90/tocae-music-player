@@ -17,7 +17,6 @@ class CardMusic extends Component {
     super(props);
     this.state = {
       favorited: null,
-      duration: null,
     };
     this.handleFavoriteMusic = this.handleFavoriteMusic.bind(this);
     this.checkIfIsFavorited = this.checkIfIsFavorited.bind(this);
@@ -29,34 +28,32 @@ class CardMusic extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { props, state } = this;
-    const actualFavorites = props[FAVORITES];
-    const prevFavorites = prevProps[FAVORITES];
-    const { favorited } = state;
+    const { favoritedMusics: actual } = this.props;
+    const { favoritedMusics: prev } = prevProps;
+    const { favorited } = this.state;
 
     if (favorited === null) this.checkIfIsFavorited();
-    if (actualFavorites.length !== prevFavorites.length) this.checkIfIsFavorited();
+    if (actual.length !== prev.length) this.checkIfIsFavorited();
   }
 
   async checkIfIsFavorited() {
-    const { props } = this;
-    const favoritesIds = props[FAVORITES];
-    const { music: { id } } = props;
-    const isFavorited = await favoritesIds.some((favorite) => favorite.id === id);
+    const { favoritedMusics, music: { id } } = this.props;
+    const isFavorited = await favoritedMusics.some((favorite) => favorite.id === id);
     if (isFavorited) this.setState({ favorited: true });
     else this.setState({ favorited: false });
   }
 
   handleFavoriteMusic(music) {
-    const { props, state: { favorited } } = this;
-    const addToFavorite = props[ADD_FAVORITE];
-    const removeFromFavorite = props[REMOVE_FAVORITE];
+    const {
+      props: { addFavorite, removeFavorite },
+      state: { favorited },
+    } = this;
 
     if (!favorited) {
-      addToFavorite(music);
+      addFavorite(music);
       this.setState({ favorited: null }, saveInFavorites(music));
     } else {
-      removeFromFavorite(music);
+      removeFavorite(music);
       this.setState({ favorited: null }, removeFromFavorites(music));
     }
   }
@@ -73,11 +70,14 @@ class CardMusic extends Component {
 
   render() {
     const {
-      props, state, handleFavoriteMusic, convertTime,
+      props: {
+        music, playMusic,
+      },
+      state: {
+        favorited,
+      },
+      handleFavoriteMusic, convertTime,
     } = this;
-    const { music } = props;
-    const playMusic = props[PLAYER];
-    const { favorited } = state;
     const {
       album, artist, title, link, preview, duration,
     } = music;
@@ -113,13 +113,13 @@ class CardMusic extends Component {
 }
 
 const mapDispatchtoProps = (dispatch) => ({
-  [ADD_FAVORITE]: (value) => dispatch(handleFavorite(value, 'add')),
-  [REMOVE_FAVORITE]: (value) => dispatch(handleFavorite(value, 'remove')),
-  [PLAYER]: (music) => dispatch(sendMusicToPlayer(music)),
+  addFavorite: (payload) => dispatch(handleFavorite(payload, 'add')),
+  removeFavorite: (payload) => dispatch(handleFavorite(payload, 'remove')),
+  playMusic: (payload) => dispatch(sendMusicToPlayer(payload)),
 });
 
 const mapStateToProps = (state) => ({
-  [FAVORITES]: state[FAVORITES],
+  favoritedMusics: state.tracks,
 });
 
 export default connect(mapStateToProps, mapDispatchtoProps)(CardMusic);

@@ -1,19 +1,16 @@
 import { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { FAVORITES, SEARCH } from 'Actions/types';
 import { CardMusic } from 'Components';
 import { FavoritesList, Title } from './styles';
 
 class Favorites extends PureComponent {
   render() {
-    const { props } = this;
-    const favorites = props[FAVORITES];
-    const { isUserSearching } = props[SEARCH];
+    const { favoritedMusics, isUserSearching } = this.props;
 
     return (
       <FavoritesList userSearching={isUserSearching}>
         <Title>Favoritos</Title>
-        {favorites.map((favorite) => (
+        {favoritedMusics.map((favorite) => (
           <CardMusic music={favorite} key={favorite.id}>{favorite.title}</CardMusic>
         ))}
       </FavoritesList>
@@ -22,8 +19,8 @@ class Favorites extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  [FAVORITES]: state[FAVORITES],
-  [SEARCH]: state[SEARCH],
+  favoritedMusics: state.tracks,
+  isUserSearching: state.search,
 
 });
 

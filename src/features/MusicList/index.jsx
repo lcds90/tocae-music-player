@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { TOP_CHART, SEARCH, RESULTS } from 'Actions/types';
 import { CardMusic } from 'Components';
 import { searchForMoreMusic } from 'Services/api';
 import { MusicList, Title } from './styles';
@@ -16,9 +15,9 @@ class List extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { props } = this;
-    const { results: { next } } = props[RESULTS];
-    if (next !== prevProps[RESULTS].results.next) {
+    const { props: { search } } = this;
+    const { results: { next } } = search;
+    if (next !== prevProps.search.results.next) {
       this.setState({ next });
     }
   }
@@ -37,16 +36,14 @@ class List extends Component {
   }
 
   render() {
-    const { props, state } = this;
-    const { isUserSearching } = props[SEARCH];
+    const { search, tracks } = this.props;
+    const { isUserSearching } = search;
     const {
       topChart: { data },
-    } = props[TOP_CHART];
-    const {
       results: { data: musics, total },
-    } = props[RESULTS];
+    } = tracks;
 
-    const { resultsFromNext, next } = state;
+    const { resultsFromNext, next } = this.state;
     if (isUserSearching && musics && total > 0) {
       return (
         <>
@@ -82,9 +79,8 @@ class List extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  [TOP_CHART]: state[TOP_CHART],
-  [SEARCH]: state[SEARCH],
-  [RESULTS]: state[RESULTS],
+  tracks: state.tracks,
+  search: state.search,
 });
 
 export default connect(mapStateToProps)(List);

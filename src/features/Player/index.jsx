@@ -17,10 +17,9 @@ class Player extends Component {
   }
 
   render() {
-    const { props } = this;
     const {
       musicPlaying,
-    } = props[PLAYER];
+    } = this.props;
     const {
       artist,
       album,
@@ -52,7 +51,7 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  [PLAYER]: state[PLAYER],
+  musicPlaying: state.tracks,
 });
 
 export default connect(mapStateToProps)(Player);

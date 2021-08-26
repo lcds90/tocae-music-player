@@ -6,10 +6,6 @@ import {
 } from 'Actions';
 
 import {
-  SEARCH, RESULTS,
-} from 'Actions/types';
-
-import {
   searchForMusic,
 } from 'Services/api';
 import { Container, Input } from './styles';
@@ -23,23 +19,21 @@ class Search extends Component {
   }
 
   handleSearch({ target: { value } }) {
-    const { props } = this;
-    const searchQuery = props[SEARCH];
+    const { search } = this.props;
     if (value === '') {
-      searchQuery({ query: value, isUserSearching: false });
+      search({ query: value, isUserSearching: false });
       return;
     }
-    searchQuery({ query: value, isUserSearching: true });
+    search({ query: value, isUserSearching: true });
     this.doSearch(value);
   }
 
   doSearch(query) {
-    const { props } = this;
-    const sendDataToStore = props[RESULTS];
+    const { search } = this.props;
     if (this.timeout) clearTimeout(this.timeout);
     this.timeout = setTimeout(async () => {
       const results = await searchForMusic(query);
-      sendDataToStore(results);
+      search(results);
     }, 600);
   }
 
@@ -58,8 +52,8 @@ class Search extends Component {
 }
 
 const mapDispatchtoProps = (dispatch) => ({
-  [SEARCH]: (value) => dispatch(search(value)),
-  [RESULTS]: (musics) => dispatch(sendResults(musics)),
+  search: (value) => dispatch(search(value)),
+  results: (musics) => dispatch(sendResults(musics)),
 });
 
 export default connect(null, mapDispatchtoProps)(Search);

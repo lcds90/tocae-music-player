@@ -1,36 +1,23 @@
-import {
-  Component,
-} from 'react';
-
-import {
-  connect,
-} from 'react-redux';
-
-import {
-  fetchData,
-} from 'Actions';
-
-import { SEARCH } from 'Actions/types';
-
-import {
-  Favorites,
-  MusicList, Player, Search,
-} from 'Features';
-
+import { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { fetchData } from 'Actions';
 import { Navbar } from 'Components';
+import {
+  Favorites, MusicList, Player, Search,
+} from 'Features';
 import {
   Container, Wrapper,
 } from './styles';
 
 class Home extends Component {
   componentDidMount() {
-    const { props } = this;
-    props.fetchData();
+    const { fetchMusics } = this.props;
+    fetchMusics();
   }
 
   render() {
-    const { props } = this;
-    const { isUserSearching } = props[SEARCH];
+    const { search: { isUserSearching } } = this.props;
     return (
       <Container>
         <Navbar>
@@ -46,8 +33,16 @@ class Home extends Component {
   }
 }
 
+Home.propTypes = {
+
+};
+
 const mapStateToProps = (state) => ({
-  [SEARCH]: state[SEARCH],
+  search: state.search,
 });
 
-export default connect(mapStateToProps, { fetchData })(Home);
+const mapDispatchToProps = (dispatch) => ({
+  fetchMusics: () => dispatch(fetchData()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

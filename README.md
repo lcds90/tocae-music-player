@@ -46,21 +46,20 @@ Para isso será utilizado a API do Deezer para requisitar os dados necessários,
   - [x] Axios
   - [x] Styled Components
 - [ ] Testes
-- [ ] Design Pattern
-- [ ] 1º View
-  - [ ] Deverá apresentar a lista das principais músicas do momento listadas na Deezer;
-  - [ ] Também deve existir um campo de pesquisa por texto onde podemos pesquisar por álbum, artista, ou título musical;
-  - [ ] Quando realizar alguma pesquisa, a listagem inicial deve ser substituída pela listagem referente a pesquisa. (Usar o mesmo componente de listagem)
-  - [ ] Itens da lista devem apresentar:
-    - [ ] Os dados da música como (capa do álbum, título, cantor, duração);
-    - [ ] Um botão para acessar a musica completa no Deezer;
-    - [ ] Um botão de play/pause para escutar a prévia da música;
-    - [ ] Um botão para adicionar a música na lista de músicas favoritas;
-- [ ] 2º View
-  - [ ] Será apresentada a lista com as músicas escolhidas pelo usuário na tela principal.
-  - [ ] A listagem deve ser semelhante a da tela inicial, porém deve mostrar o botão para remover da lista de favoritos.
-- [ ] Bonus
-  - [ ] Listagem de musicas deve estar contida na store do Redux, porém implemente no localStorage também.
+- [x] 1º View
+  - [x] Deverá apresentar a lista das principais músicas do momento listadas na Deezer;
+  - [x] Também deve existir um campo de pesquisa por texto onde podemos pesquisar por álbum, artista, ou título musical;
+  - [x] Quando realizar alguma pesquisa, a listagem inicial deve ser substituída pela listagem referente a pesquisa. (Usar o mesmo componente de listagem)
+  - [x] Itens da lista devem apresentar:
+    - [x] Os dados da música como (capa do álbum, título, cantor, duração);
+    - [x] Um botão para acessar a musica completa no Deezer;
+    - [x] Um botão de play/pause para escutar a prévia da música;
+    - [x] Um botão para adicionar a música na lista de músicas favoritas;
+- [x] 2º View
+  - [x] Será apresentada a lista com as músicas escolhidas pelo usuário na tela principal.
+  - [x] A listagem deve ser semelhante a da tela inicial, porém deve mostrar o botão para remover da lista de favoritos.
+- [x] Bonus
+  - [x] Listagem de musicas deve estar contida na store do Redux, porém implemente no localStorage também.
 
 ---
 
