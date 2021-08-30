@@ -19,8 +19,8 @@ class Favorites extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  favoritedMusics: state.tracks,
-  isUserSearching: state.search,
+  tracks: state.tracks,
+  search: state.search,
 
 });
 
