@@ -83,22 +83,28 @@ Para isso será utilizado a API do Deezer para requisitar os dados necessários,
 
 1.  [Yarn](https://yarnpkg.com/): Gerenciador de depedências do projeto utilizado.
 1.  [Create React App](https://create-react-app.dev/): Gera a aplicação react e suas bibliotecas padrões.
-1.  [Template Redux](https://redux.js.org/introduction/installation#create-a-react-redux-app): Template CRA com implementação do Redux
+1. [Axios](https://axios-http.com/): Para realização de requisições
+1. [Redux](https://redux.js.org/): Para gerenciamento de estado
+1. [styled-components](https://styled-components.com/): Para estilização de componentes
+1. [styled-reset]
+
 <details>
 <summary>Informações</summary>
 
-`yarn create react-app music_player --template redux`
 
 ```json
   "dependencies": {
-    "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.3",
-    "react-scripts": "4.0.3"
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.1",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.0",
+    "styled-reset": "^4.3.4"
   },
 ```
 
@@ -106,28 +112,20 @@ Para isso será utilizado a API do Deezer para requisitar os dados necessários,
 
 ##### Extras
 
-1. [Axios](https://axios-http.com/): Para realização de requisições
-1. [Redux](https://redux.js.org/): Para gerenciamento de estado
-1. [styled-components](https://styled-components.com/): Para estilização de componentes
 1. [Craco](https://yarnpkg.com/package/@craco/craco): No projeto ele é utilizado para utilizar o path aliases para facilitar o desenvolvimento, [post de referencia](https://hello-js.com/articles/path-aliases-in-react-application/)
 1. [ESLint](https://eslint.org/): Para padronização de código, biblioteca somente em modo de desenvolvimento.
+1. [stylelint](https://eslint.org/): Para padronização de código CSS, biblioteca somente em modo de desenvolvimento.
 1. [eslint-import-resolver-alias](https://yarnpkg.com/package/eslint-import-resolver-alias): Utilizado para resolver conflitos de rotas personalizados
 1. [eslint-plugin-jest](https://yarnpkg.com/package/eslint-plugin-jest): Para conseguir configurar jest com eslint
-1. [React Router DOM](https://reactrouter.com/web/): Utilizado para rotas na aplicação
-1. [history](https://yarnpkg.com/package/history): Para testes do router
 
 <details>
 <summary>Informações</summary>
 
-`yarn add axios styled-components react-router-dom`
-`yarn add eslint --dev`
-
 ```json
   "dependencies": {
-    "axios": "^0.21.1",
-    "styled-components": "^5.3.0",
-    "react-router-dom": "^5.2.0",
     "@craco/craco": "^6.2.0",
+    "react-h5-audio-player": "^3.7.1",
+    "react-icons": "^4.2.0",
   },
   "devDependencies": {
     "eslint": "^7.32.0",
@@ -165,4 +163,4 @@ _Regras no arquivo eslintsrc_
 ```
 
 - [JSX Transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#removing-unused-react-imports)
-- jsconfig.json, para [imports facilitados](https://saurabhshah23.medium.com/react-app-with-absolute-paths-using-jsconfig-json-2b07b1cb24d4)
+- jsconfig.json, para [imports facilitados](https://saurabhshah23.medium.com/react-app-with-absolute-paths-using-jsconfig-json-2b07b1cb24d4) para identificação no VS Code.

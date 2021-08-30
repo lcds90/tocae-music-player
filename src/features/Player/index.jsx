@@ -8,17 +8,17 @@ import {
 import './player.css';
 
 class Player extends Component {
-  componentDidUpdate(prevProps) {
-    const { props, state } = this;
+  /* componentDidUpdate(prevProps) {
+    console.log(this.props, prevProps);
     const { id } = props[PLAYER];
     const { id: oldId } = prevProps[PLAYER];
 
     if (id !== oldId) this.checkIfIsFavorited();
-  }
+  } */
 
   render() {
     const {
-      musicPlaying,
+      tracks: { musicPlaying },
     } = this.props;
     const {
       artist,
@@ -51,7 +51,7 @@ class Player extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  musicPlaying: state.tracks,
+  tracks: state.tracks,
 });
 
 export default connect(mapStateToProps)(Player);

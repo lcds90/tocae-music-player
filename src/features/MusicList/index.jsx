@@ -15,9 +15,10 @@ class List extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { props: { search } } = this;
-    const { results: { next } } = search;
-    if (next !== prevProps.search.results.next) {
+    console.log(this.props, prevProps);
+    const { tracks } = this.props;
+    const { results: { next } } = tracks;
+    if (next !== prevProps.tracks.results.next) {
       this.setState({ next });
     }
   }

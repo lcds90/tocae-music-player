@@ -5,12 +5,13 @@ import { FavoritesList, Title } from './styles';
 
 class Favorites extends PureComponent {
   render() {
-    const { favoritedMusics, isUserSearching } = this.props;
+    console.log(this.props);
+    const { user: { favoritedMusics }, search: { isUserSearching } } = this.props;
 
     return (
       <FavoritesList userSearching={isUserSearching}>
         <Title>Favoritos</Title>
-        {favoritedMusics.map((favorite) => (
+        {favoritedMusics && favoritedMusics.map((favorite) => (
           <CardMusic music={favorite} key={favorite.id}>{favorite.title}</CardMusic>
         ))}
       </FavoritesList>
@@ -19,7 +20,7 @@ class Favorites extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  tracks: state.tracks,
+  user: state.user,
   search: state.search,
 
 });

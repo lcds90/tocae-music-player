@@ -28,8 +28,8 @@ class CardMusic extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { favoritedMusics: actual } = this.props;
-    const { favoritedMusics: prev } = prevProps;
+    const { user: actual } = this.props;
+    const { user: prev } = prevProps;
     const { favorited } = this.state;
 
     if (favorited === null) this.checkIfIsFavorited();
@@ -37,8 +37,9 @@ class CardMusic extends Component {
   }
 
   async checkIfIsFavorited() {
-    const { favoritedMusics, music: { id } } = this.props;
-    const isFavorited = await favoritedMusics.some((favorite) => favorite.id === id);
+    const { user, music: { id } } = this.props;
+    console.log(this.props);
+    const isFavorited = await user.some((favorite) => favorite.id === id);
     if (isFavorited) this.setState({ favorited: true });
     else this.setState({ favorited: false });
   }
@@ -119,7 +120,7 @@ const mapDispatchtoProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  favoritedMusics: state.tracks,
+  user: state.user,
 });
 
 export default connect(mapStateToProps, mapDispatchtoProps)(CardMusic);
