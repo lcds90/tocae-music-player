@@ -6,7 +6,7 @@ describe('<Home /> Tests Section', () => {
   beforeEach(cleanup);
 
   it('should contain title Tocaê', () => {
-    const { getByRole,  } = renderWithRedux(<Home />);
+    const { getByRole } = renderWithRedux(<Home />);
     const title = getByRole('heading', { name: /tocaê/i });
     expect(title).toBeInTheDocument();
   });
