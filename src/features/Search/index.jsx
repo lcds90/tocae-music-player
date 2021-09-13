@@ -19,26 +19,27 @@ class Search extends Component {
   }
 
   handleSearch({ target: { value } }) {
-    const { search } = this.props;
+    const { searchByQuery } = this.props;
     if (value === '') {
-      search({ query: value, isUserSearching: false });
+      searchByQuery({ query: value, isUserSearching: false });
       return;
     }
-    search({ query: value, isUserSearching: true });
+    searchByQuery({ query: value, isUserSearching: true });
     this.doSearch(value);
   }
 
   doSearch(query) {
-    const { search } = this.props;
+    const { searchByQuery } = this.props;
     if (this.timeout) clearTimeout(this.timeout);
     this.timeout = setTimeout(async () => {
       const results = await searchForMusic(query);
-      search(results);
+      searchByQuery(results);
     }, 600);
   }
 
   render() {
     const { handleSearch } = this;
+    console.log(this.props);
     return (
       <Container>
         <Input
@@ -52,7 +53,7 @@ class Search extends Component {
 }
 
 const mapDispatchtoProps = (dispatch) => ({
-  search: (value) => dispatch(search(value)),
+  searchByQuery: (query) => dispatch(search(query)),
   results: (musics) => dispatch(sendResults(musics)),
 });
 

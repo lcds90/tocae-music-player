@@ -1,6 +1,6 @@
-import { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { fetchData } from 'Actions';
 import { Navbar } from 'Components';
 import {
@@ -10,6 +10,26 @@ import {
   Container, Wrapper,
 } from './styles';
 
+export default () => {
+  const dispatch = useDispatch();
+  const isUserSearching = useSelector((state) => state.search);
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
+  return (
+    <Container>
+      <Navbar>
+        <Search />
+      </Navbar>
+      <Wrapper userSearching={isUserSearching}>
+        <Favorites />
+        <MusicList />
+      </Wrapper>
+      <Player />
+    </Container>
+  );
+};
+/*
 class Home extends Component {
   componentDidMount() {
     const { fetchMusics } = this.props;
@@ -46,3 +66,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
+ */

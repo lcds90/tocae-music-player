@@ -15,7 +15,6 @@ class List extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.props, prevProps);
     const { tracks } = this.props;
     const { results: { next } } = tracks;
     if (next !== prevProps.tracks.results.next) {
